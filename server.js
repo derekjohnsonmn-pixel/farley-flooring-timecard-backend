@@ -42,6 +42,31 @@ app.post("/api/send", async (req, res) => {
   }
 });
 
+// --- TEST EMAIL ROUTE ---
+app.get("/test-email", async (req, res) => {
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from: process.env.MAIL_USER,
+      to: "farleyflooring@yahoo.com",
+      subject: "✅ Farley Flooring Timecard Test Email",
+      text: "This is a test email confirming your backend email setup works!",
+    });
+
+    res.json({ ok: true, message: "Test email sent successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`API listening on :${PORT}`);
 });
