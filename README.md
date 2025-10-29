@@ -2,7 +2,7 @@
 
 ## Env Vars (Render)
 - `MAIL_USER` = farleyflooring.timecards@gmail.com
-- `MAIL_PASS` = <Gmail App Password>
+- `MAIL_PASS` = kvkj sgxa gsgo uttg
 
 ## Start
 ```
